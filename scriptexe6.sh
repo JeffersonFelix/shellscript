@@ -24,12 +24,12 @@ echo 'Resumo arquivo: ' >> ~/$CDIR/log
 head ~/$CDIR/$FILE_LOG >> ~/$CDIR/log
 
 #Quando o Script foi executado.
-nome_log=log_`date +%d_%m_%Y_%H:%M:%S`.txt
+nome_log="log_`date +%d_%m_%Y_%H:%M:%S`.txt"  #adicionei as aspas
 
 #Comando do Script para comprimir o pacote de aruqvos log.
-EDIT_DATE=`date +%d%m%Y`
-export EDIT_DATE
-tar -cvzf log_$EDIT_DATE.tgz ~/$CDIR/log_`date +%d_%m_%Y_%H:%M:%S`.txt
-mv log_$EDIT_DATE.tgz /home/eiji
+#exclui as duas variáveis
+# excluí o export
+tar -cvzf log_$nome_log.tgz ~/$CDIR  #troquei os nomes das variáveis
+mv log_$nome_log.tgz /home/eiji
 
 echo 'finalizando script'
