@@ -12,20 +12,21 @@ echo 'diretorio criado' >> ~/exercicio/log
 #criando arquivo
 echo 'criando arquivo exemplo'
 touch ~/exercicio/momento
+touch ~/exercicio/log_`date "+%d_%m_%Y-%H:%M:%S".txt
 echo 'arquivo criado' >> ~/exercicio/log
 
 #escrevendo do arquivo
 echo 'escrevendo no arquivo'
 date >> ~/exercicio/momento
 
-#Substituição do nome do log para log_dataehora.txt
-log_name=/exercicio/"log_`date +%d%m%Y%T`.txt"
-#mv log log_`date`.txt
 echo 'resumo arquivo: ' >> ~/exercicio/log
 head ~/exercicio/momento >> ~/exercicio/log
 
 #Comando do Script para comprimir o pacote de aruqvos log.
-tar -cvzf log.tar.gz ~/exercicio --directory ~/exercicio
+EDIT_DATE=`date "+%d%m%Y"'
+export EDIT_DATE
+tar -cvzf log_$EDIT_DATE.gz ~/exercicio --directory ~/exercicio
+mv log_$EDIT_DATE.gz /home/eiji
 
 echo 'finalizando script'
 
